@@ -7,14 +7,19 @@ const getLinkPreviewData = async (link = "https://developers.google.com/search/b
     return new Promise(async (resolve, reject) => {
 
         try {
+
+            //launching the browser with the headless mode
             puppeteer.use(pluginStealth())
             const browser = await puppeteer.launch({
                 headless: true,
                 args: [...puppeteerArgs],
             });
-            const page = await browser.newPage();
 
+            /** got to the page and wait until render and load all scripts also non-crucial element */
+            const page = await browser.newPage();
             await page.goto(link, { waitUntil: 'networkidle0' });
+
+            /**getting data from page content */
             const content = await page.content()
             const $ = cheerio.load(content);
             const ogTitle = $("meta[property='og:title']").attr("content")?.trim()
@@ -30,6 +35,7 @@ const getLinkPreviewData = async (link = "https://developers.google.com/search/b
             const titleTag = $("title").text()?.trim()
             const firstH1 = $("h1").text()
             const firstP = $("p").text()
+
             resolve({
                 "og:title": ogTitle,
                 "og:description": ogDescription,
@@ -46,6 +52,7 @@ const getLinkPreviewData = async (link = "https://developers.google.com/search/b
                 "firs-<img />": firstImage
             })
 
+            //closing the browser
             await browser.close();
 
         } catch (error) {
@@ -53,4 +60,4 @@ const getLinkPreviewData = async (link = "https://developers.google.com/search/b
         }
     })
 }
-module.exports = getLinkPreviewData()
+module.exports = getLinkPreviewData
