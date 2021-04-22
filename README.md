@@ -32,7 +32,6 @@ $ yarn add simple-link-previewer
 
 ## Basic usage 
 ```js
-const linkPreviewGenerator = require("link-preview-generator");
 const getLinkPreviewData = require('simple-link-previewer')
 
 
