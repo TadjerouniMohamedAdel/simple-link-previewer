@@ -1,6 +1,6 @@
 {
   "name": "simple-link-previewer",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "main": "index.js",
   "description": "simple-link-previewer is node package that provides you to get data from a link like title, description, images as a preview of the page's content",
   "license": "MIT",

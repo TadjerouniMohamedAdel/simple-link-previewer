@@ -35,7 +35,7 @@ $ yarn add simple-link-previewer
 const getLinkPreviewData = require('simple-link-previewer')
 
 
-getLinkPreviewData("https://www.npmjs.com/package/simple-link-previewer")
+getLinkPreviewData("https://www.youtube.com/watch?v=E-znxPIeTOE")
   .then(resp=>console.log(resp))
   .catch(error=>console.log(error))
 ```
@@ -43,19 +43,34 @@ You will get :<br/><br/>
 
 ```js
 {
-  'og:title': 'simple-link-previewer',
-  'og:description': '<h1>Simple Link Previewer</h1>',
-  'og:image': 'https://static.npmjs.com/338e4905a2684ca96e08c7780fc68412.png',
-  'og:site_name': 'npm',
-  'og:url': 'https://www.npmjs.com/package/simple-link-previewer',
-  'link-url': undefined,
-  'image-src': undefined,
-  'meta-description': '<h1>Simple Link Previewer</h1>',
-  'keywords': '',
-  '<title>': 'simple-link-previewer  -  npm',
-  'first-<h1>': 'npm\nSimple Link Previewer',
-  'first-<p>': 'docnpm i simple-link-previewer1.0.0MIT2.94 kB3an hour ago',
-  'firs-<img />': '/npm-avatar/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdmF0YXJVUkwiOiJodHRwczovL3MuZ3JhdmF0YXIuY29tL2F2YXRhci9hMWY3YmMxNmNhYjA0Y2Y1YmU5MDY5YWUzNDUyNmQ4ZT9zaXplPTEwMCZkZWZhdWx0PXJldHJvIn0.rYxO6FCjLIp29MAMyebv63I05oIb6R0LoUFMfxG0s-I'
+  'meta-og': {
+    'og:title': 'LES MINIONS "La Compétition" (Mini Film - Court Métrage)',
+    'og:description': 'Un match de boxe au sommet, une compétition ENRAGÉE ! Les Minions vont, encore, trop loin ! ★ Les Meilleurs films pour Enfants Ici ► http://bit.ly/Films-Enfa...',
+    'og:image': 'https://i.ytimg.com/vi/E-znxPIeTOE/maxresdefault.jpg',
+    'og:url': 'https://www.youtube.com/watch?v=E-znxPIeTOE',
+    'og:site_name': 'YouTube'
+  },
+  'meta-twitter': {
+    'twitter:title': 'LES MINIONS "La Compétition" (Mini Film - Court Métrage)',
+    'twitter:description': 'Un match de boxe au sommet, une compétition ENRAGÉE ! Les Minions vont, encore, trop loin ! ★ Les Meilleurs films pour Enfants Ici ► http://bit.ly/Films-Enfa...',
+    'twitter:image': 'https://i.ytimg.com/vi/E-znxPIeTOE/maxresdefault.jpg',
+    'twitter:url': 'https://www.youtube.com/watch?v=E-znxPIeTOE',
+    'twitter:site': '@youtube'
+  },
+  'link': {
+    'link-url': 'https://www.youtube.com/watch?v=E-znxPIeTOE',
+    'image-src': 'https://i.ytimg.com/vi/E-znxPIeTOE/maxresdefault.jpg'
+  },
+  'meta': {
+    'meta-description': 'Un match de boxe au sommet, une compétition ENRAGÉE ! Les Minions vont, encore, trop loin ! ★ Les Meilleurs films pour Enfants Ici ► http://bit.ly/Films-Enfa...',
+    'keywords': 'Minions (Film), court metrage, mini, film, boxe, competition, Short Film (Film Genre)'
+  },
+  '<title>': 'LES MINIONS "La Compétition" (Mini Film - Court Métrage) - YouTube',
+  'body': {
+    'first-<h1>': 'LES MINIONS "La Compétition" (Mini Film - Court Métrage)',
+    'first-<p>': '',
+    'firs-<img />': ''
+  }
 }
 ```
 ## Built with

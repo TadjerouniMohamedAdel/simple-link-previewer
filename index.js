@@ -3,7 +3,7 @@ const puppeteer = require('puppeteer-extra');
 const pluginStealth = require("puppeteer-extra-plugin-stealth");
 
 
-const getLinkPreviewData = async (link = "https://developers.google.com/search/blog/2009/02/specify-your-canonical", puppeteerArgs = []) => {
+const getLinkPreviewData = async (link, puppeteerArgs = []) => {
     return new Promise(async (resolve, reject) => {
 
         try {
@@ -31,25 +31,47 @@ const getLinkPreviewData = async (link = "https://developers.google.com/search/b
             const metaDescription = $("meta[name='description']").attr("content")?.trim()
             const ogSite = $("meta[property='og:site_name']").attr("content")?.trim()
             const imgSrc = $("link[rel='image_src']").attr("href")?.trim()
-            const firstImage = $("img").attr("src")?.trim()
+            const firstImage = $("img").first().attr("src")?.trim()
             const titleTag = $("title").text()?.trim()
-            const firstH1 = $("h1").text()
-            const firstP = $("p").text()
+            const firstH1 = $("h1").first().text()
+            const firstP = $("p").first().text()
+
+            const twitterImage = $("meta[name='twitter:image']").attr("content")?.trim()
+            const twitterTitle = $("meta[name='twitter:title']").attr("content")?.trim()
+            const twitterDescription = $("meta[name='twitter:description']").attr("content")?.trim()
+            const twitterUrl = $("meta[name='twitter:url']").attr("content")?.trim()
+            const twitterSite = $("meta[name='twitter:site']").attr("content")?.trim()
+
 
             resolve({
-                "og:title": ogTitle,
-                "og:description": ogDescription,
-                "og:image": ogImage,
-                "og:site_name": ogSite,
-                "og:url": ogUrl,
-                "link-url": linkUrl,
-                "image-src": imgSrc,
-                "meta-description": metaDescription,
-                "keywords": keywords,
+                "meta-og": {
+                    "og:title": ogTitle,
+                    "og:description": ogDescription,
+                    "og:image": ogImage,
+                    "og:url": ogUrl,
+                    "og:site_name": ogSite,
+                },
+                "meta-twitter": {
+                    "twitter:title": twitterTitle,
+                    "twitter:description": twitterDescription,
+                    "twitter:image": twitterImage,
+                    "twitter:url": twitterUrl,
+                    "twitter:site": twitterSite
+                },
+                "link": {
+                    "link-url": linkUrl,
+                    "image-src": imgSrc,
+                },
+                "meta": {
+                    "meta-description": metaDescription,
+                    "keywords": keywords,
+                },
                 "<title>": titleTag,
-                "first-<h1>": firstH1,
-                "first-<p>": firstP,
-                "firs-<img />": firstImage
+                "body": {
+                    "first-<h1>": firstH1,
+                    "first-<p>": firstP,
+                    "firs-<img />": firstImage,
+                }
             })
 
             //closing the browser
@@ -60,4 +82,5 @@ const getLinkPreviewData = async (link = "https://developers.google.com/search/b
         }
     })
 }
+
 module.exports = getLinkPreviewData
