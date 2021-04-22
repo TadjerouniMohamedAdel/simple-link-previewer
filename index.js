@@ -8,7 +8,11 @@ const getLinkPreviewData = async (link, puppeteerArgs = []) => {
         //launching the browser with the headless mode
         const browser = await puppeteer.launch({
             headless: true,
-            args: [...puppeteerArgs],
+            args: [
+                ...puppeteerArgs,
+                '--no-sandbox',
+                '--disable-setuid-sandbox',
+            ],
         });
         puppeteer.use(pluginStealth())
 
