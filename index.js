@@ -43,7 +43,7 @@ const getLinkPreviewData = async (link = "https://developers.google.com/search/b
                 "og:site_name": ogSite,
                 "og:url": ogUrl,
                 "link-url": linkUrl,
-                "image_src": imgSrc,
+                "image-src": imgSrc,
                 "meta-description": metaDescription,
                 "keywords": keywords,
                 "<title>": titleTag,
