@@ -5,16 +5,14 @@ const pluginStealth = require("puppeteer-extra-plugin-stealth");
 
 const getLinkPreviewData = async (link, puppeteerArgs = []) => {
     return new Promise(async (resolve, reject) => {
+        //launching the browser with the headless mode
+        const browser = await puppeteer.launch({
+            headless: true,
+            args: [...puppeteerArgs],
+        });
+        puppeteer.use(pluginStealth())
 
         try {
-
-            //launching the browser with the headless mode
-            puppeteer.use(pluginStealth())
-            const browser = await puppeteer.launch({
-                headless: true,
-                args: [...puppeteerArgs],
-            });
-
             /** got to the page and wait until render and load all scripts also non-crucial element */
             const page = await browser.newPage();
             await page.goto(link, { waitUntil: 'networkidle0' });
@@ -79,8 +77,8 @@ const getLinkPreviewData = async (link, puppeteerArgs = []) => {
 
         } catch (error) {
             reject(error)
+            await browser.close();
         }
     })
 }
-
 module.exports = getLinkPreviewData
