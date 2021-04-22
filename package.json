@@ -1,6 +1,6 @@
 {
   "name": "simple-link-previewer",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
@@ -8,5 +8,26 @@
     "puppeteer": "^8.0.0",
     "puppeteer-extra": "^3.1.18",
     "puppeteer-extra-plugin-stealth": "^2.7.6"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TadjerouniMohamedAdel/simple-link-previewer.git"
+  },
+  "keywords": [
+    "link-preview",
+    "link-previewer",
+    "link-data",
+    "previewer",
+    "link-reader",
+    "link",
+    "open-graph",
+    "twitter-card",
+    "data",
+    "extraction"
+  ],
+  "author": "Adel Mohamed Tadjerouni <mohnagato@gmail.com> (https://nagatodev.netlify.app/)",
+  "bugs": {
+    "url": "https://github.com/TadjerouniMohamedAdel/simple-link-previewer/issues"
+  },
+  "homepage": "https://github.com/TadjerouniMohamedAdel/simple-link-previewer#readme"
 }
